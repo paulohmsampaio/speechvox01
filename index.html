@@ -7,6 +7,20 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script src="deck-stage.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const btn = document.querySelector('.fullscreen-btn');
+  if (btn) {
+    btn.addEventListener('click', () => {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen();
+      } else {
+        document.exitFullscreen();
+      }
+    });
+  }
+});
+</script>
 <script type="application/json" id="speaker-notes">
 [
   "Slide de capa. Pausa de 2 segundos. Olhar a plateia. Respirar.",
@@ -211,6 +225,23 @@
     font-family: var(--font-mono); font-size: 24px;
     color: var(--ink-300);
     letter-spacing: 0.18em; text-transform: uppercase;
+  }
+  .cover-head .fullscreen-btn {
+    background: transparent;
+    border: none;
+    color: var(--ink-300);
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 4px;
+    transition: background 0.2s;
+  }
+  .cover-head .fullscreen-btn:hover {
+    background: rgba(255,255,255,0.1);
+  }
+  .cover-head .right-group {
+    display: flex;
+    align-items: center;
+    gap: 20px;
   }
   .cover-body { z-index: 3; text-align: center; display:flex; flex-direction: column; align-items: center; }
   .cover-body .rule {
@@ -1109,7 +1140,17 @@
           <span class="pill"></span>
           <span>Vox2You · Dia de Jogo 01</span>
         </div>
-        <div class="meta-stamp">TED Talk · 5 minutos</div>
+        <div class="right-group">
+          <div class="meta-stamp">TED Talk · 5 minutos</div>
+          <button class="fullscreen-btn" aria-label="Tela cheia">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 7V3H7V5H5V7H3Z" fill="currentColor"/>
+              <path d="M3 17V21H7V19H5V17H3Z" fill="currentColor"/>
+              <path d="M17 3H21V7H19V5H17V3Z" fill="currentColor"/>
+              <path d="M17 21V19H19V17H21V21H17Z" fill="currentColor"/>
+            </svg>
+          </button>
+        </div>
       </div>
 
       <div class="cover-body">
